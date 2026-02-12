@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Vinay ❤️</title>
+<style>
+body {
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  padding-top: 80px;
+}
+
+#text {
+  font-size: 22px;
+  margin-bottom: 30px;
+  white-space: pre-line;
+}
+
+img {
+  width: 250px;
+  border-radius: 15px;
+  margin: 20px;
+  opacity: 0;
+  transition: 2s;
+}
+
+.show {
+  opacity: 1;
+}
+
+button {
+  padding: 12px 20px;
+  font-size: 16px;
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+</style>
+</head>
+<body>
+
+<div id="text"></div>
+
+<img id="oldPic" src="C:\Users\Visit Health\Downloads\old.jpeg">
+<img id="newPic" src="C:\Users\Visit Health\Downloads\new.jpeg">
+
+<br>
+
+<button onclick="playMusic()">Play Perfect 🎵</button>
+
+<div id="player"></div>
+
+<script>
+let message = "Hey Vinay...\n\nThis was us.";
+let i = 0;
+
+function typeWriter() {
+  if (i < message.length) {
+    document.getElementById("text").innerHTML += message.charAt(i);
+    i++;
+    setTimeout(typeWriter, 50);
+  } else {
+    document.getElementById("oldPic").classList.add("show");
+    setTimeout(showNew, 2500);
+  }
+}
+
+function showNew() {
+  document.getElementById("text").innerHTML += "\n\nAnd this is us now.";
+  document.getElementById("newPic").classList.add("show");
+  setTimeout(finalText, 2500);
+}
+
+function finalText() {
+  document.getElementById("text").innerHTML += "\n\nStill choosing you.\nStill my favorite person.\nJust... more Perfect ❤️";
+}
+
+function playMusic() {
+  document.getElementById("player").innerHTML =
+  `<iframe width="0" height="0" 
+  src="<iframe width="560" height="315" src="https://www.youtube.com/embed/2Vv-BfVoq4g?si=dasUbIxu3WIAxJnu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>" 
+  frameborder="0" allow="autoplay"></iframe>`;
+}
+
+typeWriter();
+</script>
+
+</body>
+</html>
