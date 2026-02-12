@@ -1,92 +1,116 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <title>Vinay ❤️</title>
+
 <style>
 body {
-  background-color: black;
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #000000, #1a1a1a);
   color: white;
+  font-family: 'Helvetica Neue', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   text-align: center;
-  font-family: Arial, sans-serif;
-  padding-top: 80px;
+  overflow: hidden;
 }
 
-#text {
-  font-size: 22px;
-  margin-bottom: 30px;
-  white-space: pre-line;
+h1 {
+  font-weight: 300;
+  letter-spacing: 1px;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+p {
+  font-size: 18px;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+  animation-delay: 1s;
 }
 
 img {
-  width: 250px;
-  border-radius: 15px;
-  margin: 20px;
+  width: 260px;
+  border-radius: 20px;
+  margin: 15px;
   opacity: 0;
-  transition: 2s;
+  transform: scale(0.9);
+  transition: all 2s ease;
 }
 
 .show {
   opacity: 1;
+  transform: scale(1);
 }
 
 button {
-  padding: 12px 20px;
-  font-size: 16px;
-  background: #ff4d6d;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
   margin-top: 20px;
+  padding: 12px 24px;
+  background: #ff4d6d;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ff1e4d;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
 }
 </style>
 </head>
+
 <body>
 
-<div id="text"></div>
+<h1>Hey Vinay...</h1>
+<p>This was us.</p>
 
-<img id="oldPic" src="C:\Users\Visit Health\Downloads\old.jpeg">
-<img id="newPic" src="C:\Users\Visit Health\Downloads\new.jpeg">
+<img id="oldPic" src="old.jpg">
 
-<br>
+<p id="nowText" style="display:none;">And this is us now.</p>
 
-<button onclick="playMusic()">Play Perfect 🎵</button>
+<img id="newPic" src="new.jpg">
 
-<div id="player"></div>
+<p id="finalText" style="display:none;">
+Still choosing you.<br>
+Still my favorite person.<br>
+Just... more Perfect ❤️
+</p>
+
+<button onclick="startExperience()">Play Perfect 🎵</button>
+
+<div id="music" style="display:none;">
+  <iframe width="0" height="0"
+    src="https://www.youtube.com/embed/2Vv-BfVoq4g?autoplay=1"
+    frameborder="0"
+    allow="autoplay">
+  </iframe>
+</div>
 
 <script>
-let message = "Hey Vinay...\n\nThis was us.";
-let i = 0;
+function startExperience() {
+  document.getElementById("oldPic").classList.add("show");
 
-function typeWriter() {
-  if (i < message.length) {
-    document.getElementById("text").innerHTML += message.charAt(i);
-    i++;
-    setTimeout(typeWriter, 50);
-  } else {
-    document.getElementById("oldPic").classList.add("show");
-    setTimeout(showNew, 2500);
-  }
+  setTimeout(() => {
+    document.getElementById("nowText").style.display = "block";
+    document.getElementById("newPic").classList.add("show");
+  }, 2500);
+
+  setTimeout(() => {
+    document.getElementById("finalText").style.display = "block";
+  }, 5000);
+
+  document.getElementById("music").style.display = "block";
 }
-
-function showNew() {
-  document.getElementById("text").innerHTML += "\n\nAnd this is us now.";
-  document.getElementById("newPic").classList.add("show");
-  setTimeout(finalText, 2500);
-}
-
-function finalText() {
-  document.getElementById("text").innerHTML += "\n\nStill choosing you.\nStill my favorite person.\nJust... more Perfect ❤️";
-}
-
-function playMusic() {
-  document.getElementById("player").innerHTML =
-  `<iframe width="0" height="0" 
-  src="<iframe width="560" height="315" src="https://www.youtube.com/embed/2Vv-BfVoq4g?si=dasUbIxu3WIAxJnu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>" 
-  frameborder="0" allow="autoplay"></iframe>`;
-}
-
-typeWriter();
 </script>
 
 </body>
